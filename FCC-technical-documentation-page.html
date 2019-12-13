@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">       
+  </script>
+  
+  <nav id="navbar">
+    <header><img src="https://www.gimp.org/images/frontpage/wilber-big.png" id="logo" alt="GIMP logo">
+    <h1 id="company">GIMP</h1></header>
+    <ul>
+      <a href="#introduction" class="nav-link"><li>Introduction</li></a>
+      <a href="#what_you_should_already_know" class="nav-link"><li>What You Should Already Know</li></a>
+    <a href="#making_a_background_transparent" class="nav-link"><li>Making a Background Transparent</li></a>
+      <a href="#creating_a_contrast_mask" class="nav-link"><li>Creating a Contrast Mask</li></a>
+    <a href="#salvaging_blown_out_highlights" class="nav-link"><li>Salvaging Blown Out Highlights</li></a>
+      <a href="#creating_icons" class="nav-link"><li>Creating Icons</li></a>
+     <!--
+      <a href="#x" class="nav-link"><li>X</li></a>
+-->    </ul>
+  </nav>
+  
+  
+  <main id="main-doc">
+    
+    <section class="main-section" id="introduction">
+      <header><h2>Introduction</h2></header>
+      <article>
+      <p>GIMP is an acronym for GNU Image Manipulation Program. It is a free and open-source raster graphics editor used for image retouching and editing, free-form drawing, converting between different image formats, and more specialized tasks.</p>
+      </article>
+    </section>
+    
+    <section class="main-section" id="what_you_should_already_know">
+      <header>
+        <h2>What You Should Already Know</h2>
+      </header>
+      <article>
+      <p>This guide assumes you have the following:</p>
+        <ul>
+          <li>Knowledge of basic photo editing methods, such as changing the dimension of an image, cropping, rotating, and colour curves</li>
+          <li>Some experience with photo editing and manipulation</li>
+          <li>Experience working with image layers</li>
+          <li>An understanding of GIMP's layout</li>
+          <li>Version 2.10.8 of GIMP. If you are using a different version, the steps may vary.</li>
+        </ul>
+      </article>
+    </section>
+    
+    
+    <section class="main-section" id="making_a_background_transparent">
+      <header>
+        <h2>Making a Background Transparent</h2>
+      </header>
+      <article>
+        <p>Sometimes you need to separate the subject of an image from its background. You may want to have the subject on a flat colour, or keep the background transparent so you can use it on an existing background, or any other thing you have in mind. </p>
+        <h4>Option 1</h4>
+        <p>This method should automatically remove the background if you have a very simple image. After opening your image, click the following:</p>
+        <code>Layer → Transparency → Add Alpha Channel
+        <br>then Color → Color to Alpha</code>
+        
+        <h4>Option 2</h4>
+        <p> If GIMP doesn't want to remove the background automatically, you can use the Magic Wand to select an area by colour, then hit the "delete" key. Remember to add an Alpha Channel before doing so.</p>
+        
+        <h4>Option 3</h4>
+        <p></p>  
+        <code>Tools → Selection Tools → By Color Select</code>
+        <p>Click to select the colour you want to remove, then hit the "delete" key.</p>
+        
+        <h4>Option 4</h4>
+        <p> Use the Lasso tool to trace the edges of the subject. Click Select -> Invert have the Lasso select the background to remove it. This option may not work so well if you don't have a steady hand. </p>
+        
+        <h4>Option 5</h4>
+        <p>This option works best if you have a more detailed image. First:</p>
+        <code>Layer → Mask → Add Layer Mask</code>
+      <p>Now select the Brush tool, make sure the foreground colour is Black, and begin erasing the background. You'll want to zoom in very closely on your image to ensure you can see the details and adjust the size of the brush as needed.
+        <br><br>Note that if you want to export and keep the background as a vector, the image will have to be saved as a .png file.</p>
+        
+        <h4>Before and After:</h4>
+        <figure> <img src="https://3.bp.blogspot.com/-8V7e5WIvssU/UTgRR6ultdI/AAAAAAAAXsI/3WG7cB2sDg0/s1600/ScreenShot27.jpg" alt="dino before"><img src="https://4.bp.blogspot.com/-IAHL9gh2LIg/UTgRTH3ABKI/AAAAAAAAXso/1JAZjPUYdi8/s1600/ScreenShot31.jpg" alt="dino after"></figure>
+        
+      </article>
+    </section>
+    
+    
+    <section class="main-section" id="creating_a_contrast_mask">
+      <header>
+        <h2>Creating a Contrast Mask</h2>
+      </header>
+      <article>
+        <p>A contrast mask allows you to reduce overall contrast, simultaneously bringing out more detail in highlights and shadows. This may be necessary to obtain a decent print, because prints on paper do not have as much dynamic range as a monitor; if you don’t control the contrast, detail in the highlights may blow out and detail in the shadows can block up and become muddy or even black. You can of course modify your image directly in GIMP to decrease contrast, but the advantage of the contrast mask technique is that it allows you much more precise control, and gives better results.
+      <br><br>Here is the original image:</p>
+        <img src="https://www.gimp.org/tutorials/ContrastMask/original.jpg" alt="example image of flowers">
+        <h4>Step 1</h4>
+        <p>To begin, create a duplicate layer and rename the new layer “Contrast Mask”. Select the Contrast Mask layer, then click:</p>
+        <code> Image → Colors → Desaturate</code>
+        <img src="https://www.gimp.org/tutorials/ContrastMask/image2.jpg" alt="B&W flowers">
+        
+        <h4>Step 2</h4>
+        <p>After creating your B&W image, select the following to create a B&W negative image of your original:</p>
+        <code>Image → Colors → Invert</code>
+        <p>Go back to the Layers dialog and in the “Mode” drop-down box, select “Overlay”. The result may look better in terms of contrast, but degraded in terms of overall sharpness.</p>
+        
+        <h4>Step 3</h4>
+        <p>Go back to the image window and select:</p>
+          <code> Filters → Blur → Gaussian Blur </code>
+<p>You will need to experiment to find the best value, but typically a value between 10 and 30 will do. After blurring the contrast mask the overall image should now look much sharper.
+<br><br>Click on the “eye” next to the Contrast Mask layer in the Layers dialog to rapidly compare the image with and without the mask. Similarly, turn off the Background layer if you want to view the mask to do further work on it.</p>
+        
+        <h4>Before and after:</h4>
+        <figure><img src="https://www.gimp.org/tutorials/ContrastMask/original.jpg" alt="flower before"><img src="https://www.gimp.org/tutorials/ContrastMask/image5.jpg" alt="flower after"></figure>
+        
+      </article>
+    </section>
+    
+    <section class="main-section" id="salvaging_blown_out_highlights">
+      <header>
+        <h2>Salvaging Blown Out Highlights</h2>
+      </header>
+      <article>
+        <p>This is a problem that is familiar to photographers shooting transparency film, which has an effective contrast range of about 5 stops. If you are not careful with your exposure you can easily lose all detail in your highlight areas, with no way to get it back: they “blow out” to clear (white).
+       <br><br>Here is the original image:</p>
+        <img src="https://www.gimp.org/tutorials/Blown_Out_Highlights/original.jpg" alt="cat with leaves">
+        
+        <p>Using the colour picker tool, you can see that there is no usable information left in the highlight. Pure white, of course, is 255/255/255. If there had been some detail left here you could try a variation on the contrast masking technique or the “digital” neutral density filter first.</p>
+        <img src="https://www.gimp.org/tutorials/Blown_Out_Highlights/colorpicker1.jpg" alt="color picker">
+  
+  <h4>Step 1</h4>
+        <p>Duplicate the original image. In the duplicate, select:</p>
+        <code>Image → Colors → Threshold</code> 
+        <p>In the threshold dialog box, drag to select the very right (extreme highlights) portion of the histogram. Alternatively, you can type 250 in the lower bound "Threshold Range". This causes all the pixels in the image from 250-255 to go white and all the others to go black.</p>
+        
+        <h4>Step 2</h4>
+        <p>Go back to the original image, and bring up the Layers and Channels dialog:</p>
+        <code>Layers → Layers, Channels & Paths <br>or Ctrl+L</code>
+        <p>Click on the Channels tab and add a new channel by clicking on the new channel button.</p>
+        
+        <h4>Step 3</h4>
+        <p>Go back to the threshold image: </p> 
+        <code>Select → All (Ctrl+A) <br>then  Edit → Copy (Ctrl+C)</code>
+ <p>Paste it into the original image (it should go into the new channel), then click on the Layers tab and anchor the floating selection. You can close the threshold image now.</p>
+        
+        <h4>Step 4</h4>
+        <p>Click on the Channels tab again, and right click on the new channel and select Channel to Selection (Ctrl+S). You may want to also click on the eye beside the channel to turn off visibility of the channel.
+     <br><br>Now feather the selection. A value of 15 pixels or so were used in this case. Finally, click back on the Layers tab and select the Background layer, so the selection and further operations will apply to the image and not the channel mask.</p>
+        
+        <h4>Step 5</h4>
+         <img src="https://www.gimp.org/tutorials/Blown_Out_Highlights/image2.jpg" alt="cat with selection">
+        <p>WThese pixels have been lost entirely, so we’re going to have to graft some on from somewhere nearby using the clone tool. In this case, clone from the light part of the leaf just beyond the dark band to the right of the blown out area. This gives a similar light-dark-light transition. Zoom in and clone until you have the area filled with a realistic facimile of the missing detail. Most likely it will have a noticable transition around the edges.</p>
+        
+        <h4>Step 6</h4>
+        <p>Smudge around all the edges of the clone. The clone tool can also be used again here and there for “mop-up” work. Use the airbrush and blur tools to do fine touch up on the smudge job and make it totally seamless with the rest of the leaf.</p>
+        
+        <h4>Before and after:</h4>
+        <figure><img src="https://www.gimp.org/tutorials/Blown_Out_Highlights/image4.jpg" alt="leaf before">
+        <img src="https://www.gimp.org/tutorials/Blown_Out_Highlights/image5.jpg" alt="leaf after"></figure> 
+      </article>
+    </section>
+    
+    
+    <section class="main-section" id="creating_icons">
+      <header>
+        <h2>Creating Icons</h2>
+      </header>
+      <article>
+        <p>Almost every desktop enviroment has a special application for creating icons, usually a very limited drawing application. In this short tutorial, we’ll show you how GIMP can help you create icons for your desktop.</p>
+        
+        <h4>Choosing a Colour Palette</h4>
+        <p>If you’re going to create more than one icon, having a pre-selected palette can give your icons a more consistent look and feel.
+        <br><br>You may want to consider using a palette that already exists. Many operating systems like have a system-wide colour palette that is used on low colour depth screens.</p>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/palette.png" alt="colour palette">
+        <p>If you prefer to create your own palette, it’s best to just define the most basic colours. Focus mostly on defining a set of hues you’ll be using. Later on, you can tweak the value or saturation to create highlights or shadows of that particular colour. Having a complex palette with many variations will make it complex and hard to navigate.</p>
+        
+        <h4>Antialiasing</h4>
+        <p>Although many tools like the brush tool work well in large images, they aren’t effective at the icon size. In particular, drawing with a 1x1 pixel brush doesn’t behave as well as could be hoped.</p>
+        <figure><img src="https://www.gimp.org/tutorials/Creating_Icons/aa1.png" alt="line">
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/aa2.png" alt="line with antialiasing"></figure>
+        <p>All you need for this is the opacity setting of the pencil tool. Say we have an outline that’s aliased (first image). Select a 1x1 brush and set the opacity to something like 40%. When you start drawing with this black brush by clicking on the white surface, it will become light gray. One more click and it gets darker. That way you can easily create fluent transitions between the two border colors (second image). If you’re using layers to have more freedom experimenting, you will find the erase tool as useful for anti-aliasing as the pencil. Make sure you turn on the hard edges option, for maximum precision.
+        </p>
+        
+        <h4>Shading with Gradients</h4>
+        <p>You can use gradients to enhance the shape of an object. For round objects, choose a radial gradient, and for curves, use a linear gradient. For filling surfaces, you’ll want to use linear gradients almost every time. Even when the surface is supposed to be flat, a slight gradient adds realism. Make sure to keep the gradient subtle, though: too much of a difference between the two extremes and you’ll ruin the effect.</p>
+        
+        <h4>Highlights and Shadows</h4>
+        <p>Whether it’s just a little gleam or shine from a corner or a suggestion of depth by lowering the saturation or value of a corner in the back, you can improve the look of an icon with just a little work.
+       <br><br>For smooth shading, select the area you want to work with and then apply the airbrush tool. You’ll only affect the selection, so you don’t have to worry about overspray. To do hard highlights, use the one pixel pencil tool and, as before, a lowered opacity for the color.</p>
+        
+        <h4>Step 1</h4>
+        <p>Create a new image with a 48x48 pixel dimension. Because working on such a tiny pixmap requires a lot of detail, zoom in to work on a pixel-by-pixel level. 
+        <br><br>At that magnification, however, you will begin to lose perspective. It’s best to keep an additional window open with an unmagnified view, so you can see what your icon will look like. To do that, choose  View -> New view from the image context menu (the little arrow in the upper left side of the window). Use a 1:1 zoom on this view, so that you can paint at an 8:1 zoom and see the results immediately.
+        <br><br>Make sure to turn off the selection decorations on the 1:1 window. To do that, focus the window and press Ctrl+T or choose  View -> Toggle selection.</p>
+          
+        <h4>Step 2</h4>
+      <p>To begin creating a TV icon, create a separate foreground layer for the shape, and choose a light, but not completely white, color for the background layer. After you’re done with the icon, you can drag colors from the palette to the background layer to make sure that the icon looks right on any background.
+      <br><br>Drag the black preview rectangle from the toolbox, or press Ctrl-+ to fill the silhouette. You should have a black square on a light background. Then, use the eraser tool to smooth the edges of the square so that the shape is better. This will also add a slight white shine to the corners of the image.</p>
+        
+        <h4>Step 3</h4>
+        <p>Next, we’re going to use alpha blending of a selection to give a more three dimensional appearance to the silhouette.</p>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/gradient.png" alt="step 2">
+        <p>Select the TV silhouette by right-clicking on the layer in the layer window and choosing Alpha to Selection. Shrink the selection by 1 pixel and fill it with a linear gradient similar to the image above. Now you have a dark grey shape with a black outline, and slightly shiny corners.</p>
+        
+        <h4>Step 4</h4>
+        <p>Add a bit more depth, using the highlight trick from the section called “Highlights And Shadows”. Use a white 1x1 pencil to create highlights, and a black one to create shadows. </p>
+        
+        <h4>Step 5</h4>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/screen.png" alt="tv screen">
+        <p>Create the screen exactly the same way you did the TV silhouette. Create a new layer, and add a smaller rectangular selection, positioned inside the television one. Fill it with black, shrink the selection by 1 pixel and finally fill it with linear gradient to form a screen like the one shown in image above.</p>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/reflection.png" alt="screen with light">
+       <p>An important aspect of glass surfaces is the reflection. To make the television screen look shiny and reflective, shrink the selection by another pixel and create a new layer. Now, pick the airbrush tool and a mid-sized fuzzy brush. Paint a white reflection like the one in image above.
+        <br><br>If you want to create horizontal monitor lines on the screen, you can use the interlace effect. To do so, create a new layer above the current one. Render white horizontal lines with:</p> 
+        <code>Filters → Render → Pattern → Grid</code>
+        <p>Make sure you set the layer mode to Overlay.
+          <br><br>After that, you’ll want to create buttons. Create a circular selection with the elipse tool and fill it with radial gradient. Choosing a gradient instead of a solid fill provides a bit of shine to the button, so even if it’s just a few pixels across, it looks distinct and three dimensional.</p>
+        
+        <h4>Step 6</h4>
+        <p>For the remote, use the bezier selection tool to create the outline of the object. </p>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/remote1.png" alt="remote outline">
+        <p>To create a shadow for the remote, copy the path window and move just one node. You can make almost any image, especially a small one, easier to understand by adding black object outlines to enhance contrast. To do this, you’ll use the opposite of technique you used to create the television silhouette with its outline. First, right-click on the remote control layer and select Layers -> Alpha to selection. Create a new empty layer below the remote control layer. Increase the size of the selection by 1 pixel, and fill the selection with black.
+       <br><br>Instead of manually refining each pixel, you can use the erase tool with a 1x1 pixel brush, and opacity between 60 and 70 percent. Choose the “draw straight lines” option, and smooth the outline by drawing close to the border of the object. 
+       <br><br>Use the pencil tool with a 1x1 pixel brush and opacity set quite low, near 20% to create highlights on the inner edges.
+       <br><br>To create buttons on the remote control, use the same technique as you did to create the button on the TV: Make a selection with the bezeier tool, then fill it with a gradient, and apply highlights and shadows with the pencil tool as needed.</p>  
+        
+        <h4>Step 7</h4>
+        <p>For extra realism you can add a TV glow. </p>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/remote9.png" alt="tv glow"> 
+        <p>Create a layer above the screen, but below the remote. Create a rectangular selection of the screen, then increase its size by 6 pixels and fill it with blue. Now, shrink that selection by 3 pixels and fill with white. Deselect the area, then apply  Filter -> Blur -> Gaussian Blur RLE by about 5 pixels. Now set the layer mode to overlay, creating the transparency effect.</p>
+        
+        <h4>Final product:</h4>
+        <img src="https://www.gimp.org/tutorials/Creating_Icons/finished.png" alt="finished tv icon">
+      </article>
+    </section>
+ <!--   
+    <section class="main-section" id="x">
+      <header>
+        <h2>x</h2>
+      </header>
+      <article>
+        
+        <code></code>   
+      </article>
+    </section>        
+        
+      </article>
+</section>
+-->
+   
+  </main>
+  </html>

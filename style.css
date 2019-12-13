@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans+Condensed:300);
+
+html,body{
+  min-width: 300px;
+  font-family: 'Open Sans Condensed', sans serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+#logo {
+  max-height: 100px;
+}
+
+#navbar {
+  border-right: 2px solid black;
+  position: fixed;
+  padding-left: 0px;
+  background-color: #404040;
+  color: white;
+}
+
+#navbar ul{
+  border-top: 2px solid white;
+  overflow-x: hidden; 
+  padding: 0;
+}
+#navbar li{
+  color: white;
+  padding: 8px;
+  list-style: none;
+  width:100%; 
+}
+
+#navbar a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.0em;
+  margin-top: 5px;
+}
+
+h1, h2, h4 {
+  font-family: 'Josefin Sans', sans serif;
+}
+
+main figure {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  margin-left: 310px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-height: 300px;
+}
+
+figure img {
+  display: inline-block;
+  text-align: center;
+  max-height: 300px;
+}
+
+code {
+  display: block;
+  margin: 0 auto;
+  background-color: lightgray;
+  border: 1px solid gray;
+  width: 350px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1040px) {
+  main {
+     margin-left: 0;
+    margin-top: 310px;
+  }
+  
+  #navbar{
+      position:absolute;
+      top:0;
+      padding:0;
+      margin: 0;
+      width:100%;
+      max-height:300px;
+    }
+  
+  #navbar ul{
+    max-height:150px;
+    margin-top: 100px;
+  }
+  
+  #navbar li {
+    padding-bottom: 0px;
+  }
+  
+  #company {
+  position: fixed;
+  margin-left: 40%;
+  margin-top: 35px;
+  font-size: 48px;
+  padding: 0 0 0 50px;
+}
+
+#logo {
+  position: fixed;
+  margin-left: 30%;
+  top: 8px;
+  width: 100px;
+}
+ 
+}
+
+@media only screen and (max-width: 400px) {
+  main figure {
+    max-height: 200px;
+  }
+}
+
+@media only screen and (min-width: 1040px) {
+  body {
+    color: black;
+  }
+}
